@@ -3,7 +3,9 @@ package org.example.collections;
 import com.google.gson.Gson;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CollectionsMethodsImpl implements CollectionsMethods{
     @Override
@@ -62,6 +64,25 @@ public class CollectionsMethodsImpl implements CollectionsMethods{
     public String convertToJson(List<String> list) {
         Gson gson = new Gson();
         return gson.toJson(list);
+    }
+
+    @Override
+    public Set<Integer> convertArrayIntoSet(Integer[] array) {
+        return new HashSet<>(Arrays.asList(array));
+    }
+
+    @Override
+    public Map<Integer, Integer> convertListIntoMap(List<Integer> list) {
+        return list.stream()
+                .collect(Collectors.toMap(Integer::intValue, Function.identity()));
+    }
+
+    @Override
+    public List<String> zippedList(List<String> names, List<Integer> ages) {
+        return IntStream
+                .range(0, Math.min(names.size(), ages.size()))
+                .mapToObj(i -> names.get(i) + ":" + ages.get(i))
+                .collect(Collectors.toList());
     }
 
 }

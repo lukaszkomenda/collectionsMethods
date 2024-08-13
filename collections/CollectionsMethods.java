@@ -2,6 +2,7 @@ package org.example.collections;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public interface CollectionsMethods {
     int getRandomElement(List<Integer> basket);
@@ -13,4 +14,7 @@ public interface CollectionsMethods {
     List<String> removeDifferences(List<String> listOne, List<String> listTwo);
     List<String> removeDifferencesWithStream(List<String> listOne, List<String> listTwo);
     String convertToJson (List<String> list);
+    Set<Integer> convertArrayIntoSet (Integer[] array);
+    Map<Integer, Integer> convertListIntoMap (List<Integer> list);
+    List<String> zippedList (List<String> names, List<Integer> ages);
 }
